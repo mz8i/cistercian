@@ -2,37 +2,79 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.App {
+  background-color: antiquewhite;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
 }
 
-.App-link {
-  color: #61dafb;
+.App .cistercian-number {
+  stroke: brown;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.number-section {
+  margin-bottom: 1em;
+}
+
+.year-text-input {
+  font-size: 1em;
+  background-color: transparent;
+  border: 1px solid gray;
+  box-shadow: none;
+  line-height: 2em;
+  text-align: center;
+  width: 5em;
+  font-family: monospace;
+}
+
+.number-btn {
+  font-size: 0.8em;
+  padding: 0 0.5em;
+  background-color: transparent;
+  line-height: 2em;
+  box-shadow: none;
+  border: 1px solid brown;
+  cursor: pointer;
+  width: 4em;
+}
+
+.number-btn:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 50%);
+}
+
+.year-slider {
+  display: inline-block;
+  width: 80%;
+  vertical-align: middle;
+}
+.year-slider-label {
+  font-size: 0.5em;
+  vertical-align: middle;
+}
+
+
+.negative-change .number-btn {
+  margin-left: -1px;
+}
+.positive-change .number-btn {
+  margin-right: -1px;
+}
+
+.description {
+  font-size: 20pt;
+}
+
+.colophon {
+  font-size: 12pt;
+}
+.colophon a {
+  color: brown;
+}
+.colophon a:hover {
+  filter: brightness(150%);
 }

@@ -1,0 +1,23 @@
+import * as React from 'react';
+import { DigitPosition } from '../types';
+import { CistercianDigit, CistercianDigitProps } from './CistercianDigit';
+
+
+interface CistercianDigitPositionedProps extends CistercianDigitProps {
+    position: DigitPosition;
+}
+
+export const CistercianDigitPositioned: React.FC<CistercianDigitPositionedProps> = ({
+    position,
+    ...rest
+}) => {
+
+    const scaleX = (position == 'units' || position == 'hundreds') ? 1 : -1;
+    const scaleY = (position == 'tens' || position == 'units')  ? 1 : -1;
+
+    return <svg width={100} height={100} viewBox="0 0 100 100" overflow="visible">
+        <g transform={`scale(${scaleX}, ${scaleY})`} transform-origin="center" >
+            <CistercianDigit {...rest}/>
+        </g>
+    </svg>
+};
