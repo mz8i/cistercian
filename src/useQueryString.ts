@@ -1,8 +1,8 @@
 // adapted from https://medium.com/swlh/using-react-hooks-to-sync-your-component-state-with-the-url-query-string-81ccdfcb174f
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useEffect } from "react";
 import qs from "qs";
-import { useThrottle } from "@react-hook/throttle";
+import { useThrottleCallback } from "@react-hook/throttle";
 
 const setQueryStringWithoutPageReload = (qsValue: string) => { 
     const newurl = window.location.protocol + "//" +
@@ -44,21 +44,15 @@ function useQueryString<T>(
   const parsedQueryValue = (queryValue ?? "") === "" ? undefined : fromString(queryValue);
   const [value, setValue] = useState(parsedQueryValue ?? initialValue);
   
-  const [throttledValue, setThrottledValue] = useThrottle(value, 1);
+  const queryStringCallback = useThrottleCallback((key, value) => {
+    setQueryStringValue(key, toString(value));
+  }, 1);
 
   useEffect(() => {
-    setQueryStringValue(key, toString(throttledValue));
-  }, [key, toString, throttledValue])
+    queryStringCallback(key, value);
+  }, [key, value, queryStringCallback]);
 
-  const onSetValue = useCallback(
-    newValue => {
-      setValue(newValue);
-      setThrottledValue(newValue);
-    },
-    []
-  );
-
-  return [value, onSetValue];
+  return [value, setValue];
 }
 
 export default useQueryString;
