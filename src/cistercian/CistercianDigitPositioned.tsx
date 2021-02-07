@@ -16,9 +16,15 @@ export const CistercianDigitPositioned: React.FC<CistercianDigitPositionedProps>
 
     return (
         <svg width={100} height={100} viewBox="0 0 100 100" overflow="visible" >
-            <g transform={`scale(${scaleX}, ${scaleY})`} transform-origin="center" >
+            <g style={{
+                transform: `scale(${scaleX}, ${scaleY})`,
+                transformOrigin:"center", 
+                transformBox: "view-box"
+            }}>
                 <CistercianDigit {...rest}/>
             </g>
         </svg>
     );
 };
+
+//

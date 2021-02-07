@@ -52,7 +52,7 @@ export const CistercianDigit: React.FC<CistercianDigitProps> = ({
     );
 
     return <g className={`cistercian-glyph ${highlight ? "highlighted" : ""}`}  {...mouseHoverHandlers}>
-        {isOn[1] && <line key="frag-1" x1="0" y1="0" x2={100} y2="0" />}
+        {isOn[1] && <line key="frag-1" x1="0" y1="0" x2="100" y2="0" />}
         {isOn[2] && <line key="frag-2" x1="0" y1="100" x2="100" y2="100" />}
         {isOn[3] && <line key="frag-3" x1="0" y1="0" x2="100" y2="100" />}
         {isOn[4] && <line key="frag-4" x1="0" y1="100" x2="100" y2="0" />}
