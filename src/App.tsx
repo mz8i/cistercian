@@ -7,7 +7,7 @@ import { useHoverTracker } from './use-hover';
 import { useQueryString } from './useQueryString';
 
 
-function App() {
+export function App() {
   const [positionHighlight, onPositionHover] = useHoverTracker<DigitPosition>();
   const [number, setNumber] = useQueryString('year', (new Date()).getFullYear(), x => parseInt(x, 10), x => x.toString());
 
@@ -57,5 +57,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
