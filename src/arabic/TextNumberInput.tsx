@@ -47,7 +47,7 @@ export const TextNumberInput: React.FC<TextNumberInputProps> = ({
 
             value={textNumber}
             onChange={e => {
-                const newVal = e.target.value.replaceAll(/[^0-9]/g, '');
+                const newVal = e.target.value.replace(/[^0-9]/g, '');
                 if(newVal !== textNumber) {
                     setTextNumber(newVal);
                 } else {
