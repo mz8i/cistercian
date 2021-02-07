@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   
-  font-size: calc(10px + 2vw);
+  font-size: calc(10px + 2vmin);
   color: black;
 }
 
@@ -28,7 +28,7 @@
   box-sizing: border-box;
   margin-top: 1em;
   width: 100%;
-  max-width: 29em;
+  max-width: 36em;
 }
 
 .description {
@@ -44,4 +44,8 @@
 }
 .colophon a:hover {
   filter: brightness(150%);
+}
+
+.App h2 {
+  font-size: 1.5em;
 }

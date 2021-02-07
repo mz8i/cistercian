@@ -16,7 +16,7 @@
 
 .slider-container {
   width: 100%;
-
+  
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -60,11 +60,12 @@
 .position-column-list {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .position-column-list > .position-column {
   border-inline-start: 1px solid #ccc;
+  flex: 1 0;
 }
 
 .position-column-list > .position-column:first-child {
@@ -74,10 +75,9 @@
 .position-column {
   display: flex;
   flex-flow: column;
-  font-size: 1.5em;
+  font-size: 1.35em;
   height: 5em;
   align-items: center;
-  width: 25%;
 }
 
 .position-column > * {
