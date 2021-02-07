@@ -1,76 +1,43 @@
 .App {
   text-align: center;
-}
-
-.App {
   background-color: antiquewhite;
   min-height: 100vh;
+  padding-bottom: 2em;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  
+  font-size: calc(10px + 2vw);
   color: black;
 }
 
-.App .cistercian-number {
+.cistercian-number {
   stroke: brown;
+  max-width: 50%;
+  max-height: 10em;
 }
+
+.cistercian-number .highlighted {
+  stroke:rgb(224, 56, 56);
+}
+
 
 .number-section {
-  margin-bottom: 1em;
-}
-
-.year-text-input {
-  font-size: 1em;
-  background-color: transparent;
-  border: 1px solid gray;
-  box-shadow: none;
-  line-height: 2em;
-  text-align: center;
-  width: 5em;
-  font-family: monospace;
-}
-
-.number-btn {
-  font-size: 0.8em;
-  padding: 0 0.5em;
-  background-color: transparent;
-  line-height: 2em;
-  box-shadow: none;
-  border: 1px solid brown;
-  cursor: pointer;
-  width: 4em;
-}
-
-.number-btn:hover:not(:disabled) {
-  background-color: rgba(255, 255, 255, 50%);
-}
-
-.year-slider {
-  display: inline-block;
-  width: 80%;
-  vertical-align: middle;
-}
-.year-slider-label {
-  font-size: 0.5em;
-  vertical-align: middle;
-}
-
-
-.negative-change .number-btn {
-  margin-left: -1px;
-}
-.positive-change .number-btn {
-  margin-right: -1px;
+  box-sizing: border-box;
+  margin-top: 1em;
+  width: 100%;
+  max-width: 29em;
 }
 
 .description {
   font-size: 20pt;
+  margin: 1em;
 }
 
 .colophon {
-  font-size: 12pt;
+  font-size: 14pt;
 }
 .colophon a {
   color: brown;

@@ -1,8 +1,8 @@
 .cistercian-number * {
     stroke-width: 10;
+}
+
+.cistercian-glyph * {
     stroke-linecap: round;
 }
 
-.highlighted * {
-    filter: brightness(140%);
-}

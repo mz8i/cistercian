@@ -1,31 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './App.css';
+import { ArabicNumberInput } from './arabic/ArabicNumberInput';
 import { CistercianNumber } from './cistercian/CistercianNumber';
-import { NumberChangeButton } from './NumberChangeButton';
 import { DigitPosition } from './types';
-import useQueryString from './useQueryString';
+import { useHoverTracker } from './use-hover';
+import { useQueryString } from './useQueryString';
 
 
 function App() {
-  const [positionHighlight, setPositionHighlight] = useState<DigitPosition | undefined>(undefined);
+  const [positionHighlight, onPositionHover] = useHoverTracker<DigitPosition>();
   const [number, setNumber] = useQueryString('year', (new Date()).getFullYear(), x => parseInt(x, 10), x => x.toString());
-  const [textNumber, setTextNumber] = useState(number.toString());
-
-  const trimTextNumber = () => setTextNumber(textNumber.replace(/^(0+)/, ''));
-
-  useEffect(() => {
-    if(number.toString() !== textNumber.replace(/^(0+)/, '')) {
-      setTextNumber(number.toString());
-    }
-  }, [number]);
-
-  useEffect(() => {
-    if(textNumber) {
-      setNumber(parseInt(textNumber, 10));
-    }
-  }, [textNumber]);
-
-  const btnProps = {minNumber: 1, maxNumber: 9999, onChangeNumber: setNumber};
 
   return (
     <div className="App">
@@ -34,51 +18,34 @@ function App() {
       </h1>
       
       <section className="number-section cistercian">
-        <CistercianNumber number={number} highlightedPosition={positionHighlight}/>
+        <CistercianNumber
+          number={number}
+          highlightedPosition={positionHighlight}
+          onPositionHover={onPositionHover}
+        />
       </section>
 
       <section className="number-section decimal">
-        <div>
-          <span className="negative-change">
-            <NumberChangeButton number={number} change={-1000} {...btnProps} onMouseOver={e => setPositionHighlight('thousands')} onMouseOut={e => setPositionHighlight(undefined)}/>
-            <NumberChangeButton number={number} change={-100} {...btnProps} onMouseOver={e => setPositionHighlight('hundreds')} onMouseOut={e => setPositionHighlight(undefined)}/>
-            <NumberChangeButton number={number} change={-10} {...btnProps} onMouseOver={e => setPositionHighlight('tens')} onMouseOut={e => setPositionHighlight(undefined)}/>
-            <NumberChangeButton number={number} change={-1} {...btnProps} onMouseOver={e => setPositionHighlight('units')} onMouseOut={e => setPositionHighlight(undefined)}/>
-          </span>
-          <input className="year-text-input"
-            type="text"
-            pattern="[0-9]{0,4}" maxLength={4}
-            value={textNumber}
-            onChange={e => {
-              const input = e.target.value.replace(/[^0-9]/, '');
-              setTextNumber(input);
-            }}
-            onBlur={trimTextNumber}
-            />
-          <span className="positive-change">
-            <NumberChangeButton number={number} change={1} {...btnProps}  onMouseOver={e => setPositionHighlight('units')} onMouseOut={e => setPositionHighlight(undefined)}/>
-            <NumberChangeButton number={number} change={10} {...btnProps}  onMouseOver={e => setPositionHighlight('tens')} onMouseOut={e => setPositionHighlight(undefined)}/>
-            <NumberChangeButton number={number} change={100} {...btnProps}  onMouseOver={e => setPositionHighlight('hundreds')} onMouseOut={e => setPositionHighlight(undefined)}/>
-            <NumberChangeButton number={number} change={1000} {...btnProps}  onMouseOver={e => setPositionHighlight('thousands')} onMouseOut={e => setPositionHighlight(undefined)}/>
-          </span>
-        </div>
-        <div>
-          <span className="year-slider-label">0</span>
-          <input
-            className="year-slider"
-            type="range"
-            min={1} max={9999} step={1} value={number} onChange={e => setNumber(parseInt(e.target.value))} />
-          <span className="year-slider-label">9999</span>
-        </div>
+        <ArabicNumberInput
+          value={number}
+          minNumber={0}
+          maxNumber={9999}
+          
+          onChange={setNumber}
+          highlightedPosition={positionHighlight}
+          onPositionHover={onPositionHover} 
+        />
       </section>
+
       <section className="description">
         <p >
           Experiment with a medieval numbering system invented by Cistercian monks!
         </p>
         <p>
-          (copy the website URL to share a link to the selected character)
+          (copy the website URL to share a link to the selected number)
         </p>
       </section>
+
       <section className="colophon">
         <p>
           Created by <a href="https://mz8i.com">mz8i</a> (<a href="https://github.com/mz8i/cistercian">source</a>). 

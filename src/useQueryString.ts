@@ -34,7 +34,7 @@ const getQueryStringValue = (
     return values[key] as string;
 };
 
-function useQueryString<T>(
+export function useQueryString<T>(
   key: string,
   initialValue: T,
   fromString: (x: string) => T,
@@ -53,6 +53,4 @@ function useQueryString<T>(
   }, [key, value, queryStringCallback]);
 
   return [value, setValue];
-}
-
-export default useQueryString;
+};

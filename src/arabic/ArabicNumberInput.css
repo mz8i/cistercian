@@ -1,0 +1,93 @@
+.input-section {
+  margin-top: 1em;
+}
+
+.year-text-input {
+  font-size: 60px;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  line-height: 150%;
+  text-align: center;
+  width: 4em;
+  font-family: monospace;
+  vertical-align: middle;
+}
+
+.slider-container {
+  width: 100%;
+
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.slider-input {
+  flex-grow: 1;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 20px 1em;
+}
+.slider-label {
+  display: inline-block;
+
+  flex: 0;
+  padding: 0 2em;
+  
+  font-size: 0.7em;
+  vertical-align: middle;
+}
+
+
+.negative-change .number-btn {
+  margin-left: -1px;
+  border-right: 1px solid #ccc;
+}
+.positive-change .number-btn {
+  margin-right: -1px;
+  border-left: 1px solid #ccc;
+}
+
+.position-name {
+  font-size: 0.6em;
+}
+
+.position-name.highlighted {
+  color: brown;
+  filter: brightness(150%)
+}
+
+.position-column-list {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.position-column-list > .position-column {
+  border-inline-start: 1px solid #ccc;
+}
+
+.position-column-list > .position-column:first-child {
+  border: none;
+}
+
+.position-column {
+  display: flex;
+  flex-flow: column;
+  font-size: 1.5em;
+  height: 5em;
+  align-items: center;
+  width: 25%;
+}
+
+.position-column > * {
+  flex-grow: 1;
+}
+
+.position-column .position-name {
+  line-height: 200%;
+}
+
+.position-column .number-btn {
+  font-size: 1em;
+}
